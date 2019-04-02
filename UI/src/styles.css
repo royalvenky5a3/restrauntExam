@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  background-color: #ecfff8 !important;
+}
+
+button {
+  background: transparent !important;
+  color: black !important;
+  min-width: 100px !important;
+  border-color: gold;
+}
+
+button:hover {
+    background-color: gold !important;
+    font-weight: 700; 
+}

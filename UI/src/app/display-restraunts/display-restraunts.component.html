@@ -1,0 +1,107 @@
+<div class="container">
+  <div *ngIf="dataAvailable !== 0">
+    <h2 class="col-sm-7">List</h2>
+    <div *ngIf="dataAvailable === 2" style="padding:25px;">
+      Data not available
+    </div>
+    <div *ngIf="dataAvailable === 1">
+      <table class="table table-striped listContainer">
+        <tr>
+          <th>Restaurant ID</th>
+          <th>Restaurant Name</th>
+          <th>cuisines</th>
+          <th>rating</th>
+          <th>View Details</th>
+        </tr>
+        <tr *ngFor="let restraunt of restrauntsList;let i=index">
+          <td style="padding-top:15px;">{{restraunt.Restaurant_ID}}</td>
+          <td style="padding-top:15px;">{{restraunt.Restaurant_Name}}</td>
+          <td style="padding-top:15px;">{{restraunt.Cuisines}}</td>
+          <td style="padding-top:15px;">
+            <div class="progress" style="height:25px;">
+              <div
+                class="progress-bar progress-bar-striped progress-bar-animated"
+                role="progressbar" attr.aria-valuenow="{{restraunt.Aggregate_rating}}" aria-valuemin="0"
+                aria-valuemax="5" [style.background-color] ="restraunt.Rating_color" style.width.%="{{(restraunt.Aggregate_rating * 100)/5}}" >
+                {{restraunt.Aggregate_rating}}</div>
+            </div>
+          </td>
+          <td><button class="btn btn-success" (click)="viewDetailsInModel(i)" data-toggle="modal"
+              data-target="#exampleModal">View</button></td>
+        </tr>
+      </table>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">{{restrauntsList[viewIndex].Restaurant_Name}}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <table class="table table-striped listContainer">
+              <tr>
+                <th>Field</th>
+                <th>Value</th>
+              </tr>
+              <tr>
+                <td style="padding-top:15px;">Restaurant ID</td>
+                <td style="padding-top:15px;">{{restrauntsList[viewIndex].Restaurant_ID}}</td>
+              </tr>
+              <tr>
+                <td style="padding-top:15px;">Restaurant Name</td>
+                <td style="padding-top:15px;">{{restrauntsList[viewIndex].Restaurant_Name}}</td>
+              </tr>
+              <tr>
+                <td style="padding-top:15px;">Cuisines</td>
+                <td style="padding-top:15px;">{{restrauntsList[viewIndex].Cuisines}}</td>
+              </tr>
+              <tr>
+                <td style="padding-top:15px;">Average Cost for two</td>
+                <td style="padding-top:15px;">{{restrauntsList[viewIndex].Average_Cost_for_two}}</td>
+              </tr>
+              <tr>
+                <td style="padding-top:15px;">Currency</td>
+                <td style="padding-top:15px;">{{restrauntsList[viewIndex].Currency}}</td>
+              </tr>
+              <tr>
+                <td style="padding-top:15px;">Has Table booking</td>
+                <td style="padding-top:15px;">{{restrauntsList[viewIndex].Has_Table_booking}}</td>
+              </tr>
+              <tr>
+                <td style="padding-top:15px;">rating</td>
+                <td>
+                  <div class="progress" style="height:25px">
+                    <div
+                      class="progress-bar progress-bar-striped progress-bar-animated {{restrauntsList[viewIndex].Rating_color}}"
+                      role="progressbar" attr.aria-valuenow="{{restrauntsList[viewIndex].Aggregate_rating}}" aria-valuemin="0"
+                      aria-valuemax="5" style.width.%="{{(restrauntsList[viewIndex].Aggregate_rating * 100)/5}}">
+                      {{restrauntsList[viewIndex].Aggregate_rating}}</div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding-top:15px;">Rating text</td>
+                <td style="padding-top:15px;">{{restrauntsList[viewIndex].Rating_text}}</td>
+              </tr>
+              <tr>
+                <td style="padding-top:15px;">Votes</td>
+                <td style="padding-top:15px;">{{restrauntsList[viewIndex].Votes}}</td>
+              </tr>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div *ngIf="dataAvailable === 0">
+      Loading...
+    </div>
+  </div>
+</div>

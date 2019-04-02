@@ -1,0 +1,9 @@
+.nav-link:hover {
+    border-radius: 10px;
+    background-color: bisque;
+}
+nav{
+    background-color: gold;
+    font-weight: 700;
+    border-radius : 5px;
+}

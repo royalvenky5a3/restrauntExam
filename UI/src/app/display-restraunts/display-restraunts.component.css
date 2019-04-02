@@ -1,0 +1,20 @@
+.red { 
+    color : red;
+}
+.green{
+    background-color: green;
+}
+.container{
+    border : solid;
+    border-color: gold;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #ecfff8;
+}
+.listContainer{
+    border : solid;
+    color :grey;
+    padding: 20px;
+    border-width: 1px;
+    border-radius: 5px;
+}

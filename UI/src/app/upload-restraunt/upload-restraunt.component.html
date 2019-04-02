@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+        <input type="file" #fileImportInput name="File Upload" id="txtFileUpload" class="btn btn-primary"
+        (change)="fileChangeListener($event)" accept=".csv" />
+    </div>
+    <div class="col-sm-6" style="float:right;">
+        <button class="btn btn-info" (click) = "loadRestraunts()" [disabled]="!isValid">Upload</button>
+    </div>
+  </div>
+  
+</div>
